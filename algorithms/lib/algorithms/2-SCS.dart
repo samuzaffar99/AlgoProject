@@ -2,32 +2,17 @@
 // sequences X[0..m-1] and Y[0..n-1]
 import 'dart:math';
 
-int SCSLength(String X, String Y, int m, int n) {
-// if we have reached the end of either sequence, return
-// length of other sequence
-  if (m == 0 || n == 0) return n + m;
 
-// if last character of X and Y matches
-  if (X[m - 1] == Y[n - 1])
-    return SCSLength(X, Y, m - 1, n - 1) + 1;
-  else
-// else if last character of X and Y don't match
-    return min(SCSLength(X, Y, m, n - 1) + 1, SCSLength(X, Y, m - 1, n) + 1);
-}
 
 int main() {
   String X = "ABCBDAB", Y = "BDCABA";
-  int m = X.length, n = Y.length;
-
-  print(
-      "The length of shortest Common supersequence is  ${SCSLength(X, Y, m, n)}");
-  print("The length of shortest Common supersequence is  ${SCSLengthDP(X, Y)}");
+  print("The length of shortest Common supersequence is  ${SCSLength(X, Y)}");
   return 0;
 }
 
 // Function to find length of shortest Common supersequence of
 // sequences X[0..m-1] and Y[0..n-1]
-int SCSLengthDP(String X, String Y) {
+int SCSLength(String X, String Y) {
   int m = X.length, n = Y.length;
 
   // lookup table stores solution to already computed sub-problems
