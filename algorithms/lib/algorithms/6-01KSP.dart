@@ -1,9 +1,10 @@
+import 'dart:math';
+
 // Input:
 // Values (stored in array v)
 // Weights (stored in array w)
 // Number of distinct items (n)
 // Knapsack capacity W
-import 'dart:math';
 
 int knapSack(List<int> v, List<int> w, int n, int W) {
 // T[i][j] stores the maximum value that can be attained with

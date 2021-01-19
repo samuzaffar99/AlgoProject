@@ -13,15 +13,13 @@ int wordBreak(List<String> dict, String str, List<int> lookup) {
   if (lookup[n] == -1) {
 // mark sub-problem as seen (0 initially assuming string
 // can't be segmented)
-    List<int> lookup = new List<int>(n);
-
+    lookup[n] = 0;
     for (int i = 1; i <= n; i++) {
 // consider all prefixes of current string
       String prefix = str.substring(0, i);
 
 // if prefix is found in dictionary, then recur for suffix
       //(find(dict.first, dict.last, prefix) != dict.last)
-      print(dict.contains(prefix));
       if (dict.contains(prefix) &&
           wordBreak(dict, str.substring(i), lookup) == 1) {
 // return true if the string can be segmented
@@ -62,14 +60,14 @@ int main() {
 
 // look-up array to store solutions to sub-problems
 // lookup[i] stores if substring str[n-i..n) can be segmented or not
-  List<int> lookup = new List<int>.filled(str.length + 1,-1);
+  List<int> lookup = new List<int>.filled(str.length + 1, -1);
   int result = wordBreak(dict, str, lookup);
   print(result);
   if (result == 1) {
     print("String can be segmented");
   } else if (result == 0) {
     print("String can't be segmented");
-  }else {
+  } else {
     print("Error in input");
   }
 

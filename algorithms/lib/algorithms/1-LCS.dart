@@ -1,6 +1,7 @@
+import 'dart:math';
+
 // Function to find length of Longest Common Subsequence of substring
 // X[0..m-1] and Y[0..n-1]
-import 'dart:math';
 
 int LCSLength(String X, String Y) {
   int m = X.length, n = Y.length;

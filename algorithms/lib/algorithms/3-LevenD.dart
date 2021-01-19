@@ -1,12 +1,14 @@
+import 'dart:math';
+
 // Function to find Levenshtein Distance between string X and Y
 // m and n are the number of characters in X and Y respectively
-import 'dart:math';
 
 int dist(String X, int m, String Y, int n) {
 // for all i and j, T[i,j] will hold the Levenshtein distance between
 // the first i characters of X and the first j characters of Y
 // note that T has (m+1)*(n+1) values
-  var T = List.generate(m + 1, (i) => List<int>.filled(n + 1,0), growable: false);
+  var T =
+      List.generate(m + 1, (i) => List<int>.filled(n + 1, 0), growable: false);
 //int T[m + 1][n + 1] = { 0 };
 
 // source prefixes can be transformed into empty string by
