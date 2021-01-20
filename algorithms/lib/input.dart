@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:algorithms/algorithms_abc.dart';
 import 'package:algorithms/algorithms_degi.dart';
+import 'package:algorithms/algorithms_fh.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
 
@@ -60,7 +61,23 @@ class _AlgoMenuState extends State<AlgoMenu> {
         callPartP(result2);
       }
       else if(widget.opt=="CoinChangeP"){
-        callCoinChangeP(result2,0169);
+        callCoinChangeP(result2,169);
+      }
+    }
+    //fh
+    else if(widget.opt=="01KSP" || widget.opt=="RodC"){
+      path += "fh/${input}.csv";
+      var result = await loadAsset(path);
+      print("File Contents: $result");
+
+      var result2=json.decode(result).cast<int>();
+      print(result2);
+      print("Result2 is: $result2");
+      if(widget.opt=="01KSP"){
+        call01KP(result2[0],result2[1],0169);
+      }
+      else if(widget.opt=="RodC"){
+        callRodC(result2[0],result2[1],0169);
       }
     }
 

@@ -76,7 +76,7 @@ class _MainMenuState extends State<MainMenu> {
               ElevatedButton(
                 child: Text("Coin Change"),
                 onPressed: () {
-                  callAlgo("CoinChange");
+                  callAlgo("CoinChangeP");
                 },
               ),
               ElevatedButton(
