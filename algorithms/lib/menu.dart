@@ -9,7 +9,7 @@ class MainMenu extends StatefulWidget {
 class _MainMenuState extends State<MainMenu> {
   List<String> ListAlgo = [
     "Longest Common Subsequence",
-    "Shortest Common Subsequence",
+    "Shortest Common Supersequence",
     "Levenshtein(Edit) Distance",
     "Longest Increasing Subsequence",
     "Matrix Chain Multiplication",
@@ -23,7 +23,7 @@ class _MainMenuState extends State<MainMenu> {
     print("called $opt");
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => AlgoMenu(opt)),
+      MaterialPageRoute(builder: (context) => AlgoMenu(opt,ListAlgo[opt])),
     );
   }
 

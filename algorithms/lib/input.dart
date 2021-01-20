@@ -9,7 +9,8 @@ import 'dart:convert';
 
 class AlgoMenu extends StatefulWidget {
   final int opt;
-  const AlgoMenu(this.opt);
+  final String title;
+  const AlgoMenu(this.opt,this.title);
   @override
   _AlgoMenuState createState() => _AlgoMenuState();
 }
@@ -30,9 +31,9 @@ class _AlgoMenuState extends State<AlgoMenu> {
     var path = "assets/inputs/";
     LineSplitter ls = new LineSplitter();
     print(widget.opt);
-    List<String> Codes=["LCS","SCS","LIS","LevenD","MCM","01KSP","PartP","RodC","CoinChangeP","WordBreak"];
+    //List<String> Codes=["LCS","SCS","LevenD","LIS","MCM","01KSP","PartP","RodC","CoinChangeP","WordBreak"];
     //abc
-    if (widget.opt == 0 || widget.opt == 1 || widget.opt == 3) {
+    if (widget.opt == 0 || widget.opt == 1 || widget.opt == 2) {
       String param1;
       String param2;
       if (input == 0) {
@@ -64,14 +65,14 @@ class _AlgoMenuState extends State<AlgoMenu> {
       } else if (widget.opt == 1) {
         InputText = "X: \"$param1\" \n\nY: \"$param2\"";
         OutputText = callSCS(param1, param2);
-      } else if (widget.opt == 3) {
+      } else if (widget.opt == 2) {
         InputText = "X: \"$param1\" \n\nY: \"$param2\"";
         OutputText = callLevenD(param1, param2);
       }
     }
 
     //degi
-    else if (widget.opt == 2 ||
+    else if (widget.opt == 3 ||
         widget.opt == 4 ||
         widget.opt == 6 ||
         widget.opt == 8) {
@@ -94,7 +95,7 @@ class _AlgoMenuState extends State<AlgoMenu> {
         print("Result2 is: $param1");
       }
       stopwatch.start();
-      if (widget.opt == 2) {
+      if (widget.opt == 3) {
         InputText = "Values: ${param1.toString()}";
         OutputText = callLIS(param1);
       } else if (widget.opt == 4) {
@@ -138,7 +139,7 @@ class _AlgoMenuState extends State<AlgoMenu> {
         OutputText = call01KP(param1, param2, param3);
       } else if (widget.opt == 7) {
         //RodCutting
-        InputText = "Prices: ${param1.toString()}\nLengths: ${param2.toString()}\nCutLength: $param3";
+        InputText = "Prices: ${param1.toString()}\nLengths: ${param2.toString()}\nRod Length: $param3";
         OutputText = callRodC(param1, param2, param3);
       }
     }
@@ -193,7 +194,7 @@ class _AlgoMenuState extends State<AlgoMenu> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Choose Input"),
+            title: Text(widget.title),
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),

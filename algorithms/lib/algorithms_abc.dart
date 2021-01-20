@@ -40,19 +40,17 @@ int LCSLength(String X, String Y) {
 
 // Longest Common Subsequence
 String callLCS(String X, String Y) {
-  print("The length of LCS is ${LCSLength(X, Y)}");
-  return "The length of LCS is ${LCSLength(X, Y)}";
+  //print("The length of LCS is ${LCSLength(X, Y)}");
+  return "Longest Common Subsequence Length is:\n ${LCSLength(X, Y)}";
 }
 
 
-
 //SCS
-
 // Function to find length of shortest Common supersequence of
 // sequences X[0..m-1] and Y[0..n-1]
 String callSCS(String X, String Y) {
   print("The length of shortest Common supersequence is  ${SCSLength(X, Y)}");
-  return "The length of shortest Common supersequence is  ${SCSLength(X, Y)}";
+  return "Shortest Common Supersequence Length is:\n  ${SCSLength(X, Y)}";
 }
 
 // Function to find length of shortest Common supersequence of

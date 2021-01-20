@@ -2,7 +2,7 @@ import 'dart:math';
 
 // Iterative function to find longest increasing subsequence
 // of given array
-void findLIS(List<int> arr, int n) {
+List<int> findLIS(List<int> arr, int n) {
 // LIS[i] stores the longest increasing subsequence of subarray
 // arr[0..i] that ends with arr[i]
   //var LIS =new List<List<int>>(n);
@@ -27,15 +27,6 @@ void findLIS(List<int> arr, int n) {
     LIS[i].add(arr[i]);
   }
 
-// uncomment below lines to print contents of vector LIS
-/* for (int i = 0; i < n; i++)
-    {
-        cout << "LIS[" << i << "] - ";
-        for (int j : LIS[i])
-            cout << j << " ";
-        cout << endl;
-    } */
-
 // j will contain index of LIS
 
   int j=0;
@@ -45,17 +36,13 @@ void findLIS(List<int> arr, int n) {
     }
   }
 
-// print LIS
-// for (int i : LIS[j]) {
-//   print("$i ");
-// }
-  print(LIS[j]);
+  return LIS[j];
 }
 
 String callLIS(List<int> arr) {
   int n = arr.length;
-  findLIS(arr, n);
-  return "LIS";
+
+  return "Longest Increasing Subsequence is:\n ${findLIS(arr, n)}";
 }
 
 
@@ -157,11 +144,11 @@ String callPartP(List<int> arr) {
   int n = arr.length;
 
   if (partition(arr, n)) {
-    print("Yes");
-    return "Yes";
+    //print("Yes");
+    return "Can be Partitioned";
   } else {
-    print("No");
-    return "No";
+    //print("No");
+    return "Cannot be Partitioned";
   }
 }
 
