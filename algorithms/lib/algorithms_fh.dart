@@ -57,10 +57,12 @@ String call01KP(List<int> v,List<int> w,int W) {
 
 int rodCut(List<int> price, int n) {
 // T[i] stores maximum profit achieved from rod of length i
-  List<int> T = new List<int>(n + 1);
+  List<int> T = new List<int>.filled(n + 1,0);
 
 // initialize maximum profit to 0
-  for (int i = 0; i <= n; i++) T[i] = 0;
+//   for (int i = 0; i <= n; i++) {
+//     T[i] = 0;
+//   }
 
 // consider rod of length i
   for (int i = 1; i <= n; i++) {
@@ -74,6 +76,8 @@ int rodCut(List<int> price, int n) {
 }
 
 String callRodC(List<int> price,List<int> length,int n) {
-  print("Profit is ${rodCut(price, n)}");
+  //price.sort();
+  n=4;
+  //print("Profit is ${rodCut(price, n)}");
   return "Profit is ${rodCut(price, n)}";
 }

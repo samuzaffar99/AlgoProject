@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math';
 
 int main() {
@@ -28,14 +29,24 @@ int main() {
   // print(seq2);
   // print(seq3);
 
-  for(int i=0;i<10;i++) {
     var seq4 = new List<String>();
-    for (int i = 0; i < random.nextInt(80) + 20; i++) {
-      seq4.add(String.fromCharCodes(List.generate(
-          random.nextInt(20) + 1, (index) => random.nextInt(26) + 97)));
+    String name="syedabdullahmuzaffar";
+    for (int i = 0; i < random.nextInt(30) + 30; i++) {
+      if(random.nextBool()){
+        int start=random.nextInt(name.length);
+        int end=start+(random.nextInt(name.length-start)%10);
+        if(start==end){
+          seq4.add(name[start]);
+        }
+        else{
+          seq4.add(name.substring(start, end));
+        }
+      }
+      else {
+        seq4.add(String.fromCharCodes(List.generate(
+            random.nextInt(5) + 1, (index) => random.nextInt(26) + 97)));
+      }
     }
-    print(seq4);
-    print("\n");
-  }
+    print(jsonEncode(seq4));
   return 0;
 }
