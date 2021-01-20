@@ -38,9 +38,9 @@ class _MainMenuState extends State<MainMenu> {
                 },
               ),
               ElevatedButton(
-                child: Text("Leven"),
+                child: Text("LevenD"),
                 onPressed: () {
-                  callAlgo("Leven");
+                  callAlgo("LevenD");
                 },
               ),
               ElevatedButton(
