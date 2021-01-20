@@ -7,10 +7,14 @@ bool subsetSum(List<int> arr, int n, int sum) {
 //bool T[n + 1][sum + 1];
 
 // if 0 items in the list and sum is non-zero
-  for (int j = 1; j <= sum; j++) T[0][j] = false;
+  for (int j = 1; j <= sum; j++) {
+    T[0][j] = false;
+  }
 
 // if sum is zero
-  for (int i = 0; i <= n; i++) T[i][0] = true;
+  for (int i = 0; i <= n; i++) {
+    T[i][0] = true;
+  }
 
 // do for ith item
   for (int i = 1; i <= n; i++) {

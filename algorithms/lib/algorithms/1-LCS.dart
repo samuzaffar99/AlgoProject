@@ -38,9 +38,8 @@ int LCSLength(String X, String Y) {
 }
 
 // Longest Common Subsequence
-int main() {
-  String X = "XMJYAUZ", Y = "MZJAWXU";
+String callLCS(String X, String Y) {
+  //String X = "XMJYAUZ", Y = "MZJAWXU";
   print("The length of LCS is ${LCSLength(X, Y)}");
-
-  return 0;
+  return "The length of LCS is ${LCSLength(X, Y)}";
 }

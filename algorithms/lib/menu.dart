@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'input.dart';
 
 class MainMenu extends StatefulWidget {
   @override
@@ -8,6 +9,7 @@ class MainMenu extends StatefulWidget {
 class _MainMenuState extends State<MainMenu> {
   void callAlgo(String opt) {
     print("called $opt");
+    Navigator.push(context,  MaterialPageRoute(builder: (context) => AlgoMenu(opt)),);
   }
 
   @override
@@ -26,67 +28,61 @@ class _MainMenuState extends State<MainMenu> {
               ElevatedButton(
                 child: Text("LCS"),
                 onPressed: () {
-                  callAlgo("lmao");
+                  callAlgo("LCS");
                 },
               ),
               ElevatedButton(
                 child: Text("SCS"),
                 onPressed: () {
-                  callAlgo("lmao");
+                  callAlgo("SCS");
                 },
               ),
               ElevatedButton(
                 child: Text("Leven"),
                 onPressed: () {
-                  callAlgo("lmao");
+                  callAlgo("Leven");
                 },
               ),
               ElevatedButton(
                 child: Text("LIS"),
                 onPressed: () {
-                  callAlgo("lmao");
+                  callAlgo("LIS");
                 },
               ),
               ElevatedButton(
                 child: Text("MCM"),
                 onPressed: () {
-                  callAlgo("lmao");
-                },
-              ),
-              ElevatedButton(
-                child: Text("MCM"),
-                onPressed: () {
-                  callAlgo("lmao");
+                  callAlgo("MCM");
                 },
               ),
               ElevatedButton(
                 child: Text("01KSP"),
                 onPressed: () {
-                  callAlgo("lmao");
+                  callAlgo("01KSP");
                 },
               ),
               ElevatedButton(
                 child: Text("PartP"),
                 onPressed: () {
-                  callAlgo("lmao");
+                  callAlgo("PartP");
                 },
               ),
               ElevatedButton(
                 child: Text("RodC"),
                 onPressed: () {
-                  callAlgo("lmao");
+                  callAlgo("RodC");
                 },
               ),
               ElevatedButton(
                 child: Text("Coin Change"),
                 onPressed: () {
-                  callAlgo("lmao");
+                  callAlgo("CoinChange");
                 },
               ),
               ElevatedButton(
                 child: Text("WordBreak"),
                 onPressed: () {
-                  callAlgo("lmao");
+                  callAlgo("WordBreak");
                 },
               ),
             ]),
