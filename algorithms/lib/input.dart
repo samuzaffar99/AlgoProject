@@ -15,13 +15,15 @@ class AlgoMenu extends StatefulWidget {
 }
 
 class _AlgoMenuState extends State<AlgoMenu> {
-  String Input;
-  String Output;
+  String textInput;
+  String textOutput;
+  String textTime;
   Future<String> loadAsset(String path) async {
     return await rootBundle.loadString(path);
   }
 
   void runAlgo(int input) async {
+    final stopwatch = new Stopwatch();
     Random random = new Random();
     String InputText;
     String OutputText;
@@ -30,7 +32,7 @@ class _AlgoMenuState extends State<AlgoMenu> {
     print(widget.opt);
     List<String> Codes=["LCS","SCS","LIS","LevenD","MCM","01KSP","PartP","RodC","CoinChangeP","WordBreak"];
     //abc
-    if (widget.opt == "LCS" || widget.opt == "SCS" || widget.opt == "LevenD") {
+    if (widget.opt == 0 || widget.opt == 1 || widget.opt == 3) {
       String param1;
       String param2;
       if (input == 0) {
@@ -55,23 +57,24 @@ class _AlgoMenuState extends State<AlgoMenu> {
         param1 = result2[0];
         param2 = result2[1];
       }
-      if (widget.opt == "LCS") {
+      stopwatch.start();
+      if (widget.opt == 0) {
         InputText = "X: \"$param1\" \n\nY: \"$param2\"";
         OutputText = callLCS(param1, param2);
-      } else if (widget.opt == "SCS") {
+      } else if (widget.opt == 1) {
         InputText = "X: \"$param1\" \n\nY: \"$param2\"";
         OutputText = callSCS(param1, param2);
-      } else if (widget.opt == "LevenD") {
+      } else if (widget.opt == 3) {
         InputText = "X: \"$param1\" \n\nY: \"$param2\"";
         OutputText = callLevenD(param1, param2);
       }
     }
 
     //degi
-    else if (widget.opt == "LIS" ||
-        widget.opt == "MCM" ||
-        widget.opt == "PartP" ||
-        widget.opt == "CoinChangeP") {
+    else if (widget.opt == 2 ||
+        widget.opt == 4 ||
+        widget.opt == 6 ||
+        widget.opt == 8) {
       List<int> param1;
       int param2 = 169;
       if (input == 0) {
@@ -90,23 +93,24 @@ class _AlgoMenuState extends State<AlgoMenu> {
         print(param1);
         print("Result2 is: $param1");
       }
-      if (widget.opt == "LIS") {
+      stopwatch.start();
+      if (widget.opt == 2) {
         InputText = "Values: ${param1.toString()}";
         OutputText = callLIS(param1);
-      } else if (widget.opt == "MCM") {
+      } else if (widget.opt == 4) {
         InputText = "Values: ${param1.toString()}";
         OutputText = callMCM(param1);
-      } else if (widget.opt == "PartP") {
+      } else if (widget.opt == 6) {
         InputText = "Values: ${param1.toString()}";
         OutputText = callPartP(param1);
-      } else if (widget.opt == "CoinChangeP") {
+      } else if (widget.opt == 8) {
         InputText = "Values: ${param1.toString()}\nChange: $param2";
         OutputText = callCoinChangeP(param1, param2);
       }
     }
 
     //fh
-    else if (widget.opt == "01KSP" || widget.opt == "RodC") {
+    else if (widget.opt == 5 || widget.opt == 7) {
       List<int> param1;
       List<int> param2;
       int param3 = 169;
@@ -127,17 +131,20 @@ class _AlgoMenuState extends State<AlgoMenu> {
         param1 = json.decode(result2[0]).cast<int>();
         param2 = json.decode(result2[1]).cast<int>();
       }
-      if (widget.opt == "01KSP") {
+      stopwatch.start();
+      if (widget.opt == 5) {
+        //01Knapsack
         InputText = "Values: ${param1.toString()}\nWeights: ${param2.toString()}\nCapacity: $param3";
         OutputText = call01KP(param1, param2, param3);
-      } else if (widget.opt == "RodC") {
+      } else if (widget.opt == 7) {
+        //RodCutting
         InputText = "Prices: ${param1.toString()}\nLengths: ${param2.toString()}\nCutLength: $param3";
         OutputText = callRodC(param1, param2, param3);
       }
     }
 
     //j
-    else if (widget.opt == "WordBreak") {
+    else if (widget.opt == 9) {
       List<String> param1;
       String param2 = "syedabdullahmuzaffar";
       if (input == 0) {
@@ -165,17 +172,20 @@ class _AlgoMenuState extends State<AlgoMenu> {
         print("File Contents: $result");
         param1 = (jsonDecode(result) as List<dynamic>).cast<String>();
       }
-      if (widget.opt == "WordBreak") {
+      stopwatch.start();
+      if (widget.opt == 9) {
         InputText = "Words: ${param1.toString()}\n\nName: $param2";
         OutputText = callWordBreak(param1, param2);
       }
     } else {
       OutputText = "Invalid Input/Option Selected";
     }
-
+    stopwatch.stop();
+    print("Time taken: ${stopwatch.elapsed}");
     setState(() {
-      Input = InputText;
-      Output = OutputText;
+      textTime = "Time taken: ${stopwatch.elapsed}";
+      textInput = InputText;
+      textOutput = OutputText;
     });
   }
 
@@ -206,7 +216,7 @@ class _AlgoMenuState extends State<AlgoMenu> {
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           elevation: 5,
-                          side: BorderSide(color: Colors.purpleAccent, width: 2),
+                          //side: BorderSide(color: Colors.purpleAccent, width: 2),
                         ),
                         child:
                         (i!=0) ? Text("Input ${i}") : Text("Generate Random Input"),
@@ -232,7 +242,7 @@ class _AlgoMenuState extends State<AlgoMenu> {
                           "Input",
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        if (Input != null) Text("$Input"),
+                        if (textInput != null) Text("$textInput"),
                       ],
                     ),
                   )),
@@ -252,7 +262,12 @@ class _AlgoMenuState extends State<AlgoMenu> {
                           "Output",
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        if (Output != null) Text("$Output"),
+                        if (textOutput != null) Text("$textOutput"),
+                        Text(
+                          "Time",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        if (textTime != null) Text("$textTime"),
                       ],
                     ),
                   )),
