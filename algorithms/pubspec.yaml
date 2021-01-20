@@ -52,6 +52,7 @@ flutter:
     - assets/inputs/abc/
     - assets/inputs/degi/
     - assets/inputs/fh/
+    - assets/inputs/j/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

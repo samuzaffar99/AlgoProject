@@ -7,9 +7,24 @@ class MainMenu extends StatefulWidget {
 }
 
 class _MainMenuState extends State<MainMenu> {
+  List<String> ListAlgo = [
+    "LCS",
+    "SCS",
+    "LevenD",
+    "LIS",
+    "MCM",
+    "01KSP",
+    "PartP",
+    "RodC",
+    "CoinChangeP",
+    "WordBreak"
+  ];
   void callAlgo(String opt) {
     print("called $opt");
-    Navigator.push(context,  MaterialPageRoute(builder: (context) => AlgoMenu(opt)),);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => AlgoMenu(opt)),
+    );
   }
 
   @override
