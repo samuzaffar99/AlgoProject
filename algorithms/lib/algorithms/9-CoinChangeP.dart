@@ -5,7 +5,7 @@ const INT_MAX = 9223372036854775807;
 // to get total of N from set S
 int findMinCoins(List<int> S, int n, int N) {
 // T[i] stores minimum number of coins needed to get total of i
-  List<int> T = new List<int>.filled(N + 1,0);
+  List<int> T = new List<int>.filled(N + 1, 0);
 //int T[N + 1];
   T[0] = 0; // 0 coins are needed to get total of i
 

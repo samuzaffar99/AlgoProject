@@ -33,7 +33,7 @@ int wordBreak(List<String> dict, String str, List<int> lookup) {
 }
 
 // Word Break Problem
-String callWordBreak(List<String> dict,String str) {
+String callWordBreak(List<String> dict, String str) {
 // vector of strings to represent dictionary
 // we can also use trie or std::set to store dictionary
 // input string

@@ -79,7 +79,10 @@ class _MainMenuState extends State<MainMenu> {
               Center(
                 child: Text(
                   "Developed by\n Syed Abdullah Muzaffar",
-                  style: TextStyle(fontStyle: FontStyle.italic, fontSize: 12,color: Colors.black.withOpacity(0.6)),
+                  style: TextStyle(
+                      fontStyle: FontStyle.italic,
+                      fontSize: 12,
+                      color: Colors.black.withOpacity(0.6)),
                 ),
               ),
               SizedBox(height: 12),

@@ -1,10 +1,11 @@
 // Function to find the most efficient way to multiply
 // given sequence of matrices
-int MatrixChainMultiplication(List<int> dims, int n) {
+int matrixChainMultiplication(List<int> dims, int n) {
 // c[i,j] = Minimum number of scalar multiplications (i.e., cost)
 // needed to compute the matrix M[i]M[i+1]...M[j] = M[i..j]
 // The cost is zero when multiplying one matrix
-  var c = List.generate(n + 1, (i) => List<int>.filled(n + 1,0), growable: false);
+  var c =
+      List.generate(n + 1, (i) => List<int>.filled(n + 1, 0), growable: false);
 
   for (int i = 1; i <= n; i++) {
     c[i][i] = 0;
@@ -35,7 +36,7 @@ int main() {
   List<int> dims = [10, 30, 5, 60];
   int n = dims.length;
 
-  print("Minimum cost is ${MatrixChainMultiplication(dims, n)}");
+  print("Minimum cost is ${matrixChainMultiplication(dims, n)}");
 
   return 0;
 }

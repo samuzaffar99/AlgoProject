@@ -3,13 +3,13 @@ import 'dart:math';
 // Iterative function to find longest increasing subsequence
 // of given array
 List<int> findLIS(List<int> arr, int n) {
-// LIS[i] stores the longest increasing subsequence of subarray
+// matLIS[i] stores the longest increasing subsequence of subarray
 // arr[0..i] that ends with arr[i]
-  //var LIS =new List<List<int>>(n);
-  var LIS = List.generate(n, (i) => List<int>(), growable: false);
+  //var matLIS =new List<List<int>>(n);
+  List<List<int>> matLIS = List.generate(n, (i) => <int>[], growable: false);
 
-// LIS[0] denotes longest increasing subsequence ending with arr[0]
-  LIS[0].add(arr[0]);
+// matLIS[0] denotes longest increasing subsequence ending with arr[0]
+  matLIS[0].add(arr[0]);
 
 // start from second element in the array
   for (int i = 1; i < n; i++) {
@@ -18,25 +18,25 @@ List<int> findLIS(List<int> arr, int n) {
 // find longest increasing subsequence that ends with arr[j]
 // where arr[j] is less than the current element arr[i]
 
-      if (arr[j] < arr[i] && LIS[j].length > LIS[i].length) {
-        LIS[i] = List.from(LIS[j]);
+      if (arr[j] < arr[i] && matLIS[j].length > matLIS[i].length) {
+        matLIS[i] = List.from(matLIS[j]);
       }
     }
 
-// include arr[i] in LIS[i]
-    LIS[i].add(arr[i]);
+// include arr[i] in matLIS[i]
+    matLIS[i].add(arr[i]);
   }
 
-// j will contain index of LIS
+// j will contain index of matLIS
 
-  int j=0;
+  int j = 0;
   for (int i = 0; i < n; i++) {
-    if (LIS[j].length < LIS[i].length) {
+    if (matLIS[j].length < matLIS[i].length) {
       j = i;
     }
   }
 
-  return LIS[j];
+  return matLIS[j];
 }
 
 String callLIS(List<int> arr) {
@@ -44,8 +44,6 @@ String callLIS(List<int> arr) {
 
   return "Longest Increasing Subsequence is:\n ${findLIS(arr, n)}";
 }
-
-
 
 //MCM
 
@@ -55,14 +53,15 @@ int matrixChainMultiplication(List<int> dims, int n) {
 // c[i,j] = Minimum number of scalar multiplications (i.e., cost)
 // needed to compute the matrix M[i]M[i+1]...M[j] = M[i..j]
 // The cost is zero when multiplying one matrix
-  var c = List.generate(n + 1, (i) => List<int>(n + 1), growable: false);
+  var c =
+      List.generate(n + 1, (i) => List<int>.filled(n + 1, 0), growable: false);
 
   for (int i = 1; i <= n; i++) {
     c[i][i] = 0;
   }
 
   for (int len = 2; len <= n; len++) // Subsequence lengths
-      {
+  {
     for (int i = 1; i <= n - len + 1; i++) {
       int j = i + len - 1;
       c[i][j] = 9223372036854775807; //maxInt64
@@ -88,13 +87,13 @@ String callMCM(List<int> dims) {
   return "Minimum cost is ${matrixChainMultiplication(dims, n)}";
 }
 
-
 //Partition Problem
 // Return true if there exists a subset of array[0..n) with given sum
 bool subsetSum(List<int> arr, int n, int sum) {
 // T[i][j] stores true if subset with sum j can be attained with
 // using items up to first i items
-  var T = List.generate(n + 1, (i) => List<bool>(sum + 1), growable: false);
+  var T = List.generate(n + 1, (i) => List<bool>.filled(sum + 1, false),
+      growable: false);
 
 //bool T[n + 1][sum + 1];
 
@@ -135,7 +134,7 @@ bool partition(List<int> arr, int n) {
 
 // return true if sum is even and array can can be divided into
 // two subsets with equal sum
-  return (sum%2==0) && subsetSum(arr, n, sum ~/ 2);
+  return (sum % 2 == 0) && subsetSum(arr, n, sum ~/ 2);
 }
 
 // main function to solve partition problem
@@ -152,17 +151,13 @@ String callPartP(List<int> arr) {
   }
 }
 
-
-
-
-
 //Coin Change Problem
 const INT_MAX = 9223372036854775807;
 // Function to find the minimum number of coins required
 // to get total of N from set S
 int findMinCoins(List<int> S, int n, int N) {
 // T[i] stores minimum number of coins needed to get total of i
-  List<int> T = new List<int>(N + 1);
+  List<int> T = new List<int>.filled(N + 1, 0);
 //int T[N + 1];
   T[0] = 0; // 0 coins are needed to get total of i
 
@@ -191,7 +186,7 @@ int findMinCoins(List<int> S, int n, int N) {
   return T[N];
 }
 
-String callCoinChangeP(List<int> S,int N) {
+String callCoinChangeP(List<int> S, int N) {
 // n coins of given denominations
   int n = S.length;
 

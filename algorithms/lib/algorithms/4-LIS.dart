@@ -1,13 +1,13 @@
 // Iterative function to find longest increasing subsequence
 // of given array
 void findLIS(List<int> arr, int n) {
-// LIS[i] stores the longest increasing subsequence of subarray
+// matLIS[i] stores the longest increasing subsequence of subarray
 // arr[0..i] that ends with arr[i]
-  //var LIS =new List<List<int>>(n);
-  var LIS = List.generate(n, (i) => <int>[], growable: false);
+  //var matLIS =new List<List<int>>(n);
+  var matLIS = List.generate(n, (i) => <int>[], growable: false);
 
-// LIS[0] denotes longest increasing subsequence ending with arr[0]
-  LIS[0].add(arr[0]);
+// matLIS[0] denotes longest increasing subsequence ending with arr[0]
+  matLIS[0].add(arr[0]);
 
 // start from second element in the array
   for (int i = 1; i < n; i++) {
@@ -16,38 +16,38 @@ void findLIS(List<int> arr, int n) {
 // find longest increasing subsequence that ends with arr[j]
 // where arr[j] is less than the current element arr[i]
 
-      if (arr[j] < arr[i] && LIS[j].length > LIS[i].length) {
-        LIS[i] = List.from(LIS[j]);
+      if (arr[j] < arr[i] && matLIS[j].length > matLIS[i].length) {
+        matLIS[i] = List.from(matLIS[j]);
       }
     }
 
-// include arr[i] in LIS[i]
-    LIS[i].add(arr[i]);
+// include arr[i] in matLIS[i]
+    matLIS[i].add(arr[i]);
   }
 
-// uncomment below lines to print contents of vector LIS
+// uncomment below lines to print contents of vector matLIS
 /* for (int i = 0; i < n; i++)
     {
-        cout << "LIS[" << i << "] - ";
-        for (int j : LIS[i])
+        cout << "matLIS[" << i << "] - ";
+        for (int j : matLIS[i])
             cout << j << " ";
         cout << endl;
     } */
 
-// j will contain index of LIS
+// j will contain index of matLIS
 
-  int j=0;
+  int j = 0;
   for (int i = 0; i < n; i++) {
-    if (LIS[j].length < LIS[i].length) {
+    if (matLIS[j].length < matLIS[i].length) {
       j = i;
     }
   }
 
-// print LIS
-// for (int i : LIS[j]) {
+// print matLIS
+// for (int i : matLIS[j]) {
 //   print("$i ");
 // }
-  print(LIS[j]);
+  print(matLIS[j]);
 }
 
 int main() {

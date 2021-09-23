@@ -10,15 +10,15 @@ import 'dart:convert';
 class AlgoMenu extends StatefulWidget {
   final int opt;
   final String title;
-  const AlgoMenu(this.opt,this.title);
+  const AlgoMenu(this.opt, this.title);
   @override
   _AlgoMenuState createState() => _AlgoMenuState();
 }
 
 class _AlgoMenuState extends State<AlgoMenu> {
-  String textInput;
-  String textOutput;
-  String textTime;
+  String? textInput;
+  String? textOutput;
+  String? textTime;
   Future<String> loadAsset(String path) async {
     return await rootBundle.loadString(path);
   }
@@ -26,8 +26,8 @@ class _AlgoMenuState extends State<AlgoMenu> {
   void runAlgo(int input) async {
     final stopwatch = new Stopwatch();
     Random random = new Random();
-    String inputText;
-    String outputText;
+    String? inputText;
+    String? outputText;
     var path = "assets/inputs/";
     LineSplitter ls = new LineSplitter();
     print(widget.opt);
@@ -38,17 +38,16 @@ class _AlgoMenuState extends State<AlgoMenu> {
       String param2;
       if (input == 0) {
         //generate
-        String name="ABDULLAH";
-        param1="";
-        param2="";
-        for (int i=0;i<random.nextInt(70)+30;i++){
-          param1+=name[random.nextInt(name.length)];
+        String name = "ABDULLAH";
+        param1 = "";
+        param2 = "";
+        for (int i = 0; i < random.nextInt(70) + 30; i++) {
+          param1 += name[random.nextInt(name.length)];
         }
-        for (int i=0;i<random.nextInt(70)+30;i++){
-          param2+=name[random.nextInt(name.length)];
+        for (int i = 0; i < random.nextInt(70) + 30; i++) {
+          param2 += name[random.nextInt(name.length)];
         }
-      }
-      else {
+      } else {
         path += "abc/$input.csv";
         var result = await loadAsset(path);
         print("File Contents: $result");
@@ -80,9 +79,9 @@ class _AlgoMenuState extends State<AlgoMenu> {
       int param2 = 169;
       if (input == 0) {
         //generate
-        param1= <int>[];
-        for (int i=0;i<random.nextInt(70)+30;i++){
-          param1.add(random.nextInt(90)+10);
+        param1 = <int>[];
+        for (int i = 0; i < random.nextInt(70) + 30; i++) {
+          param1.add(random.nextInt(90) + 10);
         }
         print(param1);
       } else {
@@ -135,11 +134,13 @@ class _AlgoMenuState extends State<AlgoMenu> {
       stopwatch.start();
       if (widget.opt == 5) {
         //01Knapsack
-        inputText = "Values: ${param1.toString()}\nWeights: ${param2.toString()}\nCapacity: $param3";
+        inputText =
+            "Values: ${param1.toString()}\nWeights: ${param2.toString()}\nCapacity: $param3";
         outputText = call01KP(param1, param2, param3);
       } else if (widget.opt == 7) {
         //RodCutting
-        inputText = "Prices: ${param1.toString()}\nLengths: ${param2.toString()}\nRod Length: $param3";
+        inputText =
+            "Prices: ${param1.toString()}\nLengths: ${param2.toString()}\nRod Length: $param3";
         outputText = callRodC(param1, param2, param3);
       }
     }
@@ -150,19 +151,17 @@ class _AlgoMenuState extends State<AlgoMenu> {
       String param2 = "syedabdullahmuzaffar";
       if (input == 0) {
         //generate
-        param1  = <String>[];
+        param1 = <String>[];
         for (int i = 0; i < random.nextInt(30) + 30; i++) {
-          if(random.nextBool()){
-            int start=random.nextInt(param2.length);
-            int end=start+(random.nextInt(param2.length-start)%10);
-            if(start==end){
+          if (random.nextBool()) {
+            int start = random.nextInt(param2.length);
+            int end = start + (random.nextInt(param2.length - start) % 10);
+            if (start == end) {
               param1.add(param2[start]);
-            }
-            else{
+            } else {
               param1.add(param2.substring(start, end));
             }
-          }
-          else {
+          } else {
             param1.add(String.fromCharCodes(List.generate(
                 random.nextInt(5) + 1, (index) => random.nextInt(26) + 97)));
           }
@@ -194,18 +193,26 @@ class _AlgoMenuState extends State<AlgoMenu> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: Text(widget.title),
+          title: Text(widget.title),
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(children: [
-            Text("Select Input",
-              style: TextStyle(fontWeight: FontWeight.bold),),
+            Text(
+              "Select Input",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
             Container(
-              decoration: BoxDecoration(border: Border(
-                top: BorderSide(width: 1.0,),
-                bottom: BorderSide(width: 1.0,),
-              ),),
+              decoration: BoxDecoration(
+                border: Border(
+                  top: BorderSide(
+                    width: 1.0,
+                  ),
+                  bottom: BorderSide(
+                    width: 1.0,
+                  ),
+                ),
+              ),
               padding: EdgeInsets.all(8.0),
               constraints: BoxConstraints(maxHeight: 300),
               child: ListView.builder(
@@ -219,8 +226,9 @@ class _AlgoMenuState extends State<AlgoMenu> {
                           elevation: 5,
                           //side: BorderSide(color: Colors.purpleAccent, width: 2),
                         ),
-                        child:
-                        (i!=0) ? Text("Input $i") : Text("Generate Random Input"),
+                        child: (i != 0)
+                            ? Text("Input $i")
+                            : Text("Generate Random Input"),
                         onPressed: () {
                           runAlgo(i);
                         },
@@ -228,7 +236,9 @@ class _AlgoMenuState extends State<AlgoMenu> {
                     );
                   }),
             ),
-            SizedBox( height: 24.0, ),
+            SizedBox(
+              height: 24.0,
+            ),
             Container(
               width: double.infinity,
               child: Card(
@@ -273,7 +283,9 @@ class _AlgoMenuState extends State<AlgoMenu> {
                     ),
                   )),
             ),
-            SizedBox( height: 16.0, ),
+            SizedBox(
+              height: 16.0,
+            ),
           ]),
         ));
   }

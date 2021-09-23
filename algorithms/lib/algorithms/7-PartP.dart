@@ -2,7 +2,8 @@
 bool subsetSum(List<int> arr, int n, int sum) {
 // T[i][j] stores true if subset with sum j can be attained with
 // using items up to first i items
-  var T = List.generate(n + 1, (i) => List<bool>.filled(sum + 1,false), growable: false);
+  var T = List.generate(n + 1, (i) => List<bool>.filled(sum + 1, false),
+      growable: false);
 
 //bool T[n + 1][sum + 1];
 
@@ -43,7 +44,7 @@ bool partition(List<int> arr, int n) {
 
 // return true if sum is even and array can can be divided into
 // two subsets with equal sum
-  return (sum%2==0) && subsetSum(arr, n, sum ~/ 2);
+  return (sum % 2 == 0) && subsetSum(arr, n, sum ~/ 2);
 }
 
 // main function to solve partition problem

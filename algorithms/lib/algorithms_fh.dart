@@ -9,7 +9,8 @@ import 'dart:math';
 int knapSack(List<int> v, List<int> w, int n, int W) {
 // T[i][j] stores the maximum value that can be attained with
 // weight less than or equal to j using items up to first i items
-  var T = List.generate(n + 1, (i) => List<int>(W + 1), growable: false);
+  var T =
+      List.generate(n + 1, (i) => List<int>.filled(W + 1, 0), growable: false);
 //int T[n+1][W+1];
 
   for (int j = 0; j <= W; j++) {
@@ -36,7 +37,7 @@ int knapSack(List<int> v, List<int> w, int n, int W) {
 }
 
 // 0-1 Knapsack problem
-String call01KP(List<int> v,List<int> w,int W) {
+String call01KP(List<int> v, List<int> w, int W) {
 // Input: set of items each with a weight and a value
 
 // Knapsack capacity
@@ -48,14 +49,13 @@ String call01KP(List<int> v,List<int> w,int W) {
   return "Knapsack value is ${knapSack(v, w, n, W)}";
 }
 
-
 //Rod Cutting
 // Function to find best way to cut a rod of length n
 // where rod of length i has a cost price[i-1]
 
 int rodCut(List<int> price, int n) {
 // T[i] stores maximum profit achieved from rod of length i
-  List<int> T = new List<int>.filled(n + 1,0);
+  List<int> T = new List<int>.filled(n + 1, 0);
 
 // initialize maximum profit to 0
 //   for (int i = 0; i <= n; i++) {
@@ -73,9 +73,9 @@ int rodCut(List<int> price, int n) {
   return T[n];
 }
 
-String callRodC(List<int> price,List<int> length,int n) {
+String callRodC(List<int> price, List<int> length, int n) {
   //price.sort();
-  n=4;
+  n = 4;
   //print("Profit is ${rodCut(price, n)}");
   return "Profit is ${rodCut(price, n)}";
 }

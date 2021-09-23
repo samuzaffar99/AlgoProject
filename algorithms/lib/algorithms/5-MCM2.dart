@@ -1,27 +1,25 @@
-
 const int INT_MAX = 99999;
 
+var m; // = List.generate(4, (i) => List(4), growable: false);
+var s; // = List.generate(4, (i) => List(4), growable: false);
+var p; // = new List<int>();//[10, 30, 5, 60];
 
-var m;// = List.generate(4, (i) => List(4), growable: false);
-var s;// = List.generate(4, (i) => List(4), growable: false);
-var p;// = new List<int>();//[10, 30, 5, 60];
-
-int i=0,j=0,n=0;
+int i = 0, j = 0, n = 0;
 
 String getOptimal(int i, int j) {
-  String Parenth="";
+  String parenth = "";
   if (i == j)
-    Parenth+=" A$i ";
+    parenth += " A$i ";
   else {
-    Parenth+="( ";
-    Parenth+=getOptimal(i, s[i][j]);
-    Parenth+=getOptimal(s[i][j] + 1, j);
-    Parenth+=" )";
+    parenth += "( ";
+    parenth += getOptimal(i, s[i][j]);
+    parenth += getOptimal(s[i][j] + 1, j);
+    parenth += " )";
   }
-  return Parenth;
+  return parenth;
 }
 
-void matmultiply() {
+void matMultiply() {
   num q = 0;
   int k = 0;
   for (i = n; i > 0; i--) {
@@ -50,7 +48,7 @@ int matrixChainOrder(var p, int i, int j) {
   for (k = i; k < j; k++) {
     count = matrixChainOrder(p, i, k) +
         matrixChainOrder(p, k + 1, j) +
-        p[i - 1] * p[k] * p[j];
+        p[i - 1] * p[k] * p[j] as int;
 
     if (count < min) {
       min = count;
@@ -62,9 +60,11 @@ int matrixChainOrder(var p, int i, int j) {
 
 String callMCM(List<int> input) {
   i = j = n = 0;
-  p= List.from(input);
-  s = List.from(List.generate(p.length, (i) => List<int>.filled(p.length,0), growable: false));
-  m = List.from(List.generate(p.length, (i) => List<int>.filled(p.length,0), growable: false));
+  p = List.from(input);
+  s = List.from(List.generate(p.length, (i) => List<int>.filled(p.length, 0),
+      growable: false));
+  m = List.from(List.generate(p.length, (i) => List<int>.filled(p.length, 0),
+      growable: false));
   n = p.length - 1;
   for (i = 1; i <= n; i++) {
     for (j = i + 1; j <= n; j++) {
@@ -74,7 +74,7 @@ String callMCM(List<int> input) {
     }
   }
 
-  matmultiply();
+  matMultiply();
   i = 1;
   j = n;
   var res = matrixChainOrder(p, 1, n);
@@ -82,7 +82,7 @@ String callMCM(List<int> input) {
   return "Parenthesization : ${getOptimal(i, j)}\nMinimum Cost of Multiplication : $res";
 }
 
-int main(){
-  print(callMCM([10, 20, 80,50]));
+int main() {
+  print(callMCM([10, 20, 80, 50]));
   return 0;
 }

@@ -3,13 +3,14 @@ import 'dart:math';
 // Function to find length of Longest Common Subsequence of substring
 // X[0..m-1] and Y[0..n-1]
 
-int LCSLength(String X, String Y) {
+int funLCSLength(String X, String Y) {
   int m = X.length, n = Y.length;
 
   // lookup table stores solution to already computed sub-problems
   // i.e. lookup[i][j] stores the length of LCS of substring
   // X[0..i-1] and Y[0..j-1]
-  var lookup = List.generate(m + 1, (i) => List<int>.filled(n + 1,0), growable: false);
+  List<List<int>> lookup =
+      List.generate(m + 1, (i) => List<int>.filled(n + 1, 0), growable: false);
 
   // first column of the lookup table will be all 0
   for (int i = 0; i <= m; i++) {
@@ -40,6 +41,6 @@ int LCSLength(String X, String Y) {
 // Longest Common Subsequence
 String callLCS(String X, String Y) {
   //String X = "XMJYAUZ", Y = "MZJAWXU";
-  print("The length of LCS is ${LCSLength(X, Y)}");
-  return "The length of LCS is ${LCSLength(X, Y)}";
+  print("The length of LCS is ${funLCSLength(X, Y)}");
+  return "The length of LCS is ${funLCSLength(X, Y)}";
 }
