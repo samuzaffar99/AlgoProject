@@ -4,7 +4,7 @@ void findLIS(List<int> arr, int n) {
 // LIS[i] stores the longest increasing subsequence of subarray
 // arr[0..i] that ends with arr[i]
   //var LIS =new List<List<int>>(n);
-  var LIS = List.generate(n, (i) => List<int>(), growable: false);
+  var LIS = List.generate(n, (i) => <int>[], growable: false);
 
 // LIS[0] denotes longest increasing subsequence ending with arr[0]
   LIS[0].add(arr[0]);

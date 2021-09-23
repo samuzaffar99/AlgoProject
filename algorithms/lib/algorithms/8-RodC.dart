@@ -5,7 +5,7 @@ import 'dart:math';
 
 int rodCut(List<int> price, int n) {
 // T[i] stores maximum profit achieved from rod of length i
-  List<int> T = new List<int>(n + 1);
+  List<int> T = new List<int>.filled(n + 1,0);
 
 // initialize maximum profit to 0
   for (int i = 0; i <= n; i++) T[i] = 0;

@@ -4,7 +4,7 @@ int MatrixChainMultiplication(List<int> dims, int n) {
 // c[i,j] = Minimum number of scalar multiplications (i.e., cost)
 // needed to compute the matrix M[i]M[i+1]...M[j] = M[i..j]
 // The cost is zero when multiplying one matrix
-  var c = List.generate(n + 1, (i) => List<int>(n + 1), growable: false);
+  var c = List.generate(n + 1, (i) => List<int>.filled(n + 1,0), growable: false);
 
   for (int i = 1; i <= n; i++) {
     c[i][i] = 0;

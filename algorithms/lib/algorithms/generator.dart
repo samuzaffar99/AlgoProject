@@ -29,7 +29,7 @@ int main() {
   // print(seq2);
   // print(seq3);
 
-    var seq4 = new List<String>();
+    var seq4 = <String>[];
     String name="syedabdullahmuzaffar";
     for (int i = 0; i < random.nextInt(30) + 30; i++) {
       if(random.nextBool()){

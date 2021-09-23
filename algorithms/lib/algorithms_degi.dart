@@ -51,7 +51,7 @@ String callLIS(List<int> arr) {
 
 // Function to find the most efficient way to multiply
 // given sequence of matrices
-int MatrixChainMultiplication(List<int> dims, int n) {
+int matrixChainMultiplication(List<int> dims, int n) {
 // c[i,j] = Minimum number of scalar multiplications (i.e., cost)
 // needed to compute the matrix M[i]M[i+1]...M[j] = M[i..j]
 // The cost is zero when multiplying one matrix
@@ -84,8 +84,8 @@ String callMCM(List<int> dims) {
 // Matrix M[i] has dimension dims[i-1] x dims[i] for i = 1..n
 // input is 10 x 30 matrix, 30 x 5 matrix, 5 x 60 matrix
   int n = dims.length;
-  print("Minimum cost is ${MatrixChainMultiplication(dims, n)}");
-  return "Minimum cost is ${MatrixChainMultiplication(dims, n)}";
+  print("Minimum cost is ${matrixChainMultiplication(dims, n)}");
+  return "Minimum cost is ${matrixChainMultiplication(dims, n)}";
 }
 
 

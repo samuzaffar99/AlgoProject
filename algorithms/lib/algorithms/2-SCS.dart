@@ -16,7 +16,7 @@ int SCSLength(String X, String Y) {
   // lookup table stores solution to already computed sub-problems
   // i.e. lookup[i][j] stores the length of SCS of substring
   // X[0..i-1] and Y[0..j-1]
-  var lookup = List.generate(m + 1, (i) => List<int>(n + 1), growable: false);
+  var lookup = List.generate(m + 1, (i) => List<int>.filled(n + 1,0), growable: false);
 
   // initialize first column of the lookup table
   for (int i = 0; i <= m; i++) lookup[i][0] = i;

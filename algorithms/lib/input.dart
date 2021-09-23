@@ -26,8 +26,8 @@ class _AlgoMenuState extends State<AlgoMenu> {
   void runAlgo(int input) async {
     final stopwatch = new Stopwatch();
     Random random = new Random();
-    String InputText;
-    String OutputText;
+    String inputText;
+    String outputText;
     var path = "assets/inputs/";
     LineSplitter ls = new LineSplitter();
     print(widget.opt);
@@ -49,7 +49,7 @@ class _AlgoMenuState extends State<AlgoMenu> {
         }
       }
       else {
-        path += "abc/${input}.csv";
+        path += "abc/$input.csv";
         var result = await loadAsset(path);
         print("File Contents: $result");
 
@@ -60,14 +60,14 @@ class _AlgoMenuState extends State<AlgoMenu> {
       }
       stopwatch.start();
       if (widget.opt == 0) {
-        InputText = "X: \"$param1\" \n\nY: \"$param2\"";
-        OutputText = callLCS(param1, param2);
+        inputText = "X: \"$param1\" \n\nY: \"$param2\"";
+        outputText = callLCS(param1, param2);
       } else if (widget.opt == 1) {
-        InputText = "X: \"$param1\" \n\nY: \"$param2\"";
-        OutputText = callSCS(param1, param2);
+        inputText = "X: \"$param1\" \n\nY: \"$param2\"";
+        outputText = callSCS(param1, param2);
       } else if (widget.opt == 2) {
-        InputText = "X: \"$param1\" \n\nY: \"$param2\"";
-        OutputText = callLevenD(param1, param2);
+        inputText = "X: \"$param1\" \n\nY: \"$param2\"";
+        outputText = callLevenD(param1, param2);
       }
     }
 
@@ -80,13 +80,13 @@ class _AlgoMenuState extends State<AlgoMenu> {
       int param2 = 169;
       if (input == 0) {
         //generate
-        param1= new List<int>();
+        param1= <int>[];
         for (int i=0;i<random.nextInt(70)+30;i++){
           param1.add(random.nextInt(90)+10);
         }
         print(param1);
       } else {
-        path += "degi/${input}.csv";
+        path += "degi/$input.csv";
         var result = await loadAsset(path);
         print("File Contents: $result");
 
@@ -96,17 +96,17 @@ class _AlgoMenuState extends State<AlgoMenu> {
       }
       stopwatch.start();
       if (widget.opt == 3) {
-        InputText = "Values: ${param1.toString()}";
-        OutputText = callLIS(param1);
+        inputText = "Values: ${param1.toString()}";
+        outputText = callLIS(param1);
       } else if (widget.opt == 4) {
-        InputText = "Values: ${param1.toString()}";
-        OutputText = callMCM(param1);
+        inputText = "Values: ${param1.toString()}";
+        outputText = callMCM(param1);
       } else if (widget.opt == 6) {
-        InputText = "Values: ${param1.toString()}";
-        OutputText = callPartP(param1);
+        inputText = "Values: ${param1.toString()}";
+        outputText = callPartP(param1);
       } else if (widget.opt == 8) {
-        InputText = "Values: ${param1.toString()}\nChange: $param2";
-        OutputText = callCoinChangeP(param1, param2);
+        inputText = "Values: ${param1.toString()}\nChange: $param2";
+        outputText = callCoinChangeP(param1, param2);
       }
     }
 
@@ -117,14 +117,14 @@ class _AlgoMenuState extends State<AlgoMenu> {
       int param3 = 169;
       if (input == 0) {
         //generate
-        param1 = new List<int>();
-        param2 = new List<int>();
+        param1 = <int>[];
+        param2 = <int>[];
         for (int i = 0; i < random.nextInt(90) + 10; i++) {
           param1.add(random.nextInt(99) + 1);
           param2.add(random.nextInt(99) + 1);
         }
       } else {
-        path += "fh/${input}.csv";
+        path += "fh/$input.csv";
         var result = await loadAsset(path);
         print("File Contents: $result");
 
@@ -135,12 +135,12 @@ class _AlgoMenuState extends State<AlgoMenu> {
       stopwatch.start();
       if (widget.opt == 5) {
         //01Knapsack
-        InputText = "Values: ${param1.toString()}\nWeights: ${param2.toString()}\nCapacity: $param3";
-        OutputText = call01KP(param1, param2, param3);
+        inputText = "Values: ${param1.toString()}\nWeights: ${param2.toString()}\nCapacity: $param3";
+        outputText = call01KP(param1, param2, param3);
       } else if (widget.opt == 7) {
         //RodCutting
-        InputText = "Prices: ${param1.toString()}\nLengths: ${param2.toString()}\nRod Length: $param3";
-        OutputText = callRodC(param1, param2, param3);
+        inputText = "Prices: ${param1.toString()}\nLengths: ${param2.toString()}\nRod Length: $param3";
+        outputText = callRodC(param1, param2, param3);
       }
     }
 
@@ -150,7 +150,7 @@ class _AlgoMenuState extends State<AlgoMenu> {
       String param2 = "syedabdullahmuzaffar";
       if (input == 0) {
         //generate
-        param1  = new List<String>();
+        param1  = <String>[];
         for (int i = 0; i < random.nextInt(30) + 30; i++) {
           if(random.nextBool()){
             int start=random.nextInt(param2.length);
@@ -168,25 +168,25 @@ class _AlgoMenuState extends State<AlgoMenu> {
           }
         }
       } else {
-        path += "j/${input}.csv";
+        path += "j/$input.csv";
         var result = await loadAsset(path);
         print("File Contents: $result");
         param1 = (jsonDecode(result) as List<dynamic>).cast<String>();
       }
       stopwatch.start();
       if (widget.opt == 9) {
-        InputText = "Words: ${param1.toString()}\n\nName: $param2";
-        OutputText = callWordBreak(param1, param2);
+        inputText = "Words: ${param1.toString()}\n\nName: $param2";
+        outputText = callWordBreak(param1, param2);
       }
     } else {
-      OutputText = "Invalid Input/Option Selected";
+      outputText = "Invalid Input/Option Selected";
     }
     stopwatch.stop();
     print("Time taken: ${stopwatch.elapsed}");
     setState(() {
       textTime = "Time taken: ${stopwatch.elapsed}";
-      textInput = InputText;
-      textOutput = OutputText;
+      textInput = inputText;
+      textOutput = outputText;
     });
   }
 
@@ -220,7 +220,7 @@ class _AlgoMenuState extends State<AlgoMenu> {
                           //side: BorderSide(color: Colors.purpleAccent, width: 2),
                         ),
                         child:
-                        (i!=0) ? Text("Input ${i}") : Text("Generate Random Input"),
+                        (i!=0) ? Text("Input $i") : Text("Generate Random Input"),
                         onPressed: () {
                           runAlgo(i);
                         },

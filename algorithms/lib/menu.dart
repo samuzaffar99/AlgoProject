@@ -7,7 +7,7 @@ class MainMenu extends StatefulWidget {
 }
 
 class _MainMenuState extends State<MainMenu> {
-  List<String> ListAlgo = [
+  List<String> listAlgo = [
     "A- Longest Common Subsequence",
     "A- Shortest Common Supersequence",
     "A- Levenshtein(Edit) Distance",
@@ -23,7 +23,7 @@ class _MainMenuState extends State<MainMenu> {
     print("called $opt");
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => AlgoMenu(opt, ListAlgo[opt])),
+      MaterialPageRoute(builder: (context) => AlgoMenu(opt, listAlgo[opt])),
     );
   }
 
@@ -57,7 +57,7 @@ class _MainMenuState extends State<MainMenu> {
               SizedBox(height: 12),
               Expanded(
                 child: GridView.builder(
-                    itemCount: ListAlgo.length,
+                    itemCount: listAlgo.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
                       crossAxisSpacing: 10,
@@ -69,7 +69,7 @@ class _MainMenuState extends State<MainMenu> {
                             elevation: 5,
                             //side: BorderSide(color: Colors.purpleAccent, width: 2),
                           ),
-                          child: Center(child: Text("${ListAlgo[i]}")),
+                          child: Center(child: Text("${listAlgo[i]}")),
                           onPressed: () {
                             callAlgo(i);
                           });

@@ -2,7 +2,7 @@
 const int INT_MAX = 99999;
 
 
-var  m;// = List.generate(4, (i) => List(4), growable: false);
+var m;// = List.generate(4, (i) => List(4), growable: false);
 var s;// = List.generate(4, (i) => List(4), growable: false);
 var p;// = new List<int>();//[10, 30, 5, 60];
 
@@ -41,15 +41,15 @@ void matmultiply() {
   }
 }
 
-int MatrixChainOrder(var p, int i, int j) {
+int matrixChainOrder(var p, int i, int j) {
   if (i == j) return 0;
   int k = 0;
   int min = INT_MAX;
   int count;
 
   for (k = i; k < j; k++) {
-    count = MatrixChainOrder(p, i, k) +
-        MatrixChainOrder(p, k + 1, j) +
+    count = matrixChainOrder(p, i, k) +
+        matrixChainOrder(p, k + 1, j) +
         p[i - 1] * p[k] * p[j];
 
     if (count < min) {
@@ -77,7 +77,7 @@ String callMCM(List<int> input) {
   matmultiply();
   i = 1;
   j = n;
-  var res = MatrixChainOrder(p, 1, n);
+  var res = matrixChainOrder(p, 1, n);
   print("here");
   return "Parenthesization : ${getOptimal(i, j)}\nMinimum Cost of Multiplication : $res";
 }

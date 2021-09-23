@@ -2,7 +2,7 @@
 bool subsetSum(List<int> arr, int n, int sum) {
 // T[i][j] stores true if subset with sum j can be attained with
 // using items up to first i items
-  var T = List.generate(n + 1, (i) => List<bool>(sum + 1), growable: false);
+  var T = List.generate(n + 1, (i) => List<bool>.filled(sum + 1,false), growable: false);
 
 //bool T[n + 1][sum + 1];
 

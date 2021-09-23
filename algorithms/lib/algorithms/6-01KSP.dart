@@ -9,7 +9,7 @@ import 'dart:math';
 int knapSack(List<int> v, List<int> w, int n, int W) {
 // T[i][j] stores the maximum value that can be attained with
 // weight less than or equal to j using items up to first i items
-  var T = List.generate(n + 1, (i) => List<int>(W + 1), growable: false);
+  var T = List.generate(n + 1, (i) => List<int>.filled(W + 1,0), growable: false);
 //int T[n+1][W+1];
 
   for (int j = 0; j <= W; j++) {
